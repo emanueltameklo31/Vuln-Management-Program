@@ -50,37 +50,37 @@ In this phase, a meeting with the server team introduces the draft Vulnerability
 
 ## Policy Remediation Timeline Discussion
 
-**Josh:**  
+**Emanuel:**  
 Hey, good morning, Jimmy. How’s everything been lately? I know everyone’s been pretty busy these last few weeks.
 
 **Jimmy:**  
-Good morning, Josh. Yeah, it’s been a bit hectic, but we’re hanging in there. Thanks for asking. I had a chance to read through the policy draft, and overall it makes sense. However, with our current staffing, we can’t realistically meet the aggressive remediation timelines—especially the 48-hour window for critical vulnerabilities.
+Good morning, Emanuel. Yeah, it’s been a bit hectic, but we’re hanging in there. Thanks for asking. I had a chance to read through the policy draft, and overall it makes sense. However, with our current staffing, we can’t realistically meet the aggressive remediation timelines—especially the 48-hour window for critical vulnerabilities.
 
-**Josh:**  
+**Emanuel:**  
 I totally understand. That timeline *is* pretty aggressive, especially to start. Maybe we can extend the remediation window for critical vulnerabilities to one week as a compromise. Then we can reserve the 48-hour window for truly severe cases, like zero-day vulnerabilities.
 
 **Jimmy:**  
 That sounds reasonable. We really appreciate the flexibility. Would it be possible to have some leeway in the beginning while we get used to the remediation and patching process—maybe for the first few months?
 
-**Josh:**  
+**Emanuel:**  
 Absolutely. Once the policy is finalized, we’ll officially launch the program, but we’re planning to give all departments about six months to adjust and get comfortable with the new process. Does that sound fair?
 
 **Jimmy:**  
 Yes, that sounds fair. Thanks, Josh. We’ll do our best. I really appreciate you including us in the decision-making process—it helps us feel like we’re part of the solution.
 
-**Josh:**  
+**Emanuel:**  
 Of course. We’re all in this together. Thanks for working with us.
 
 **Jimmy:**  
 No problem. Thanks for the short meeting.
 
-**Josh:**  
+**Emanuel:**  
 Those are my favorite kind.
 
 **Jimmy:**  
 Bye for now.
 
-**Josh:**  
+**Emanuel:**  
 See you later.
 
 ---
