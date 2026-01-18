@@ -189,11 +189,127 @@ The server team received remediation scripts and scan reports to address key vul
 
 The server team reviewed vulnerability scan results, identifying outdated software, insecure accounts, and deprecated protocols. The remediation packages were prepared for submission to the Change Control Board (CAB). 
 
+**Vulnerability Scan Results Review**
+
+**Emanuel:**  
+Morning, Jimmy. How are you doing?
+
+**Jimmy:**  
+Not bad for a Monday. How about yourself?
+
+**Emanuel:**  
+Still alive, so I can’t complain. Before we get into the vulnerabilities, how did the scan go on your end? Did you notice any outages, overutilization, or other issues?
+
+**Jimmy:**  
+The scan went well. We monitored everything closely, and aside from the increased number of open connections, we wouldn’t have known a scan was taking place.
+
+**Emanuel:**  
+That’s good news—and about what I expected. We’ll continue monitoring going forward, but I don’t anticipate any resource utilization issues. Do you mind if I dive into the vulnerability findings?
+
+**Jimmy:**  
+Yeah, absolutely.
+
+**Emanuel:**  
+Great. I’m going to share my screen really quick.  
+The majority of the findings are related to Wireshark being installed. As you can see, there are multiple instances, and it’s simply very out of date.
+
+One interesting finding is that the local **Guest** account on the servers belongs to a group. After looking deeper, it turns out it’s a member of the local **Administrators** group, which is unexpected.
+
+Some of the other findings—like the Microsoft Edge (Chromium) vulnerabilities—may be automatically resolved through Windows Updates. I’m not entirely sure about a couple of these yet, but they may also be addressed that way. We don’t need to worry about the self-signed certificate finding, since it’s just the system’s own certificate.
+
+However, the medium-strength cipher suites and TLS 1.0 and 1.1 findings are more important. These are deprecated cipher suites and protocols, and I think we should plan to remediate them.
+
+So overall, we’re looking at:
+- Removing outdated Wireshark installations  
+- Disabling deprecated protocols and cipher suites  
+- Removing the Guest account from the local Administrators group
+
+**Jimmy:**  
+Very interesting. The good news is I suspect most of our servers will have the same vulnerabilities. Hopefully that makes remediation easier.
+
+**Emanuel:**  
+That’s actually good news—having a uniform server configuration usually makes remediation much smoother. Do you foresee any issues remediating any of these items, particularly the cipher suites or insecure protocols?
+
+**Jimmy:**  
+I highly doubt there will be any issues. We’ll run the changes through the next Change Control Board. Uninstalling Wireshark and fixing the Guest account shouldn’t be a problem—those shouldn’t be on the servers in the first place. I’ll need to talk with our CIS admins about it.
+
+**Emanuel:**  
+That’s great to hear. I’ll go ahead and start building remediation packages to make things easier when it’s time to implement the fixes.
+
+**Jimmy:**  
+That sounds great.
+
+**Emanuel:**  
+One quick question—do you already have something in place to address Windows Update–related vulnerabilities? Is patch management already configured?
+
+**Jimmy:**  
+Yes, that’s already handled. Windows Updates should resolve those automatically by next week. We have patch management in place.
+
+**Emanuel:**  
+Excellent. I’ll start researching the best way to remediate the remaining findings and get back to you before the next Change Control Board.
+
+**Jimmy:**  
+Sounds good. Talk to you soon.
+
+**Emanuel:**  
+Talk to you soon.
+
 ---
 
 ### Step 9) Mock CAB Meeting: Implementing Remediations
 
 The Change Control Board (CAB) reviewed and approved the plan to remove insecure protocols and cipher suites. The plan included a rollback script and a tiered deployment approach.  
+
+**Change Advisory Board (CAB) – Vulnerability Remediation Review**
+
+**Chair:**  
+Next up on the agenda are two vulnerability remediation items for the server team:
+1. Removal of insecure protocols  
+2. Removal of insecure cipher suites  
+
+It looks like Emanuel from the Risk Department is working in conjunction with Jimmy from Infrastructure on this effort. Jimmy, would you like to walk us through the technical aspects of the changes being implemented?
+
+**Jimmy:**  
+Normally I would, but do you mind if Emanuel takes this one? He actually built the solution for us, and we’re still getting used to the new process.
+
+**Emanuel:**  
+Sure, I can explain.  
+Insecure cipher suites and protocols simply mean the system is capable of negotiating and using algorithms or protocols that have been deprecated. If a system connects to another server that only supports those deprecated protocols, it’s possible the system could fall back and use them.
+
+These settings are controlled through the Windows registry. The remediation itself is straightforward—we developed a PowerShell script that:
+- Disables all insecure protocols and cipher suites  
+- Enables only modern, standardized, and secure protocols and cipher suites  
+
+Overall, it’s a very simple and controlled change.
+
+**CAB Member:**  
+That sounds good, but what happens if something goes wrong? Do we have a rollback plan in place?
+
+**Emanuel:**  
+Yes, absolutely. We’ve accounted for that in a few ways.  
+First, we’re using a tiered deployment approach:
+- Pilot group (small subset of systems)  
+- Pre-production  
+- Production  
+
+Additionally, we’ve built fully automated rollback scripts for each remediation. If any unexpected issues arise, the rollback script will restore the original protocol and cipher settings.
+
+**CAB Member:**  
+That sounds reasonable. Since these are just registry changes, I’m not too concerned.
+
+**Emanuel:**  
+Exactly. That’s correct.
+
+**Chair:**  
+Any additional questions from anyone?
+
+*(No further questions)*
+
+**Chair:**  
+Great. That wraps things up for this week’s CAB meeting. See you all next week.
+
+**Group:**  
+See you later.
 
 ---
 ### Step 10 ) Remediation Effort
