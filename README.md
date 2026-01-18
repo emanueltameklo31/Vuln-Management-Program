@@ -99,6 +99,56 @@ After gathering feedback from the server team, the policy is revised, addressing
 
 The team collaborates with the server team to initiate scheduled credential scans. A compromise is reached to scan a single server first, monitoring resource impact, and using just-in-time Active Directory credentials for secure, controlled access.  
 
+**Vulnerability Scanning Kickoff Discussion**
+
+**Emanuel:**  
+Morning, Jimmy.
+
+**Jimmy:**  
+Good morning. I heard you’re ready to start conducting some scans.
+
+**Emanuel:**  
+Yep. Now that our vulnerability management policy is in place, I wanted to get started with scheduled credentialed scans of your environment.
+
+**Jimmy:**  
+Sounds good to me. What’s involved, and how can we help?
+
+**Emanuel:**  
+We’re planning to schedule weekly scans of the server infrastructure. We estimate it’ll take about 4–6 hours to scan all 200 assets. We’ll need you to provide administrative credentials that allow the scan engine to remotely log into the targets so it can perform a more thorough assessment.
+
+**Jimmy:**  
+Whoa—hold on. What exactly does the scanning entail? I’m a bit concerned about resource utilization. Also, providing admin credentials to 200 machines doesn’t sound very safe.
+
+**Emanuel:**  
+Those are valid concerns. The scan engine sends specific traffic to the servers to check for the presence of known vulnerabilities. This includes inspecting registry settings, identifying outdated software, and checking for insecure protocols or cipher suites. That’s why credentials are required—it allows for deeper, more accurate assessment.
+
+**Jimmy:**  
+I see. As long as it doesn’t bring the servers offline, I think we should be okay.
+
+**Emanuel:**  
+Absolutely. To be safe, let’s start by scanning a single server and closely monitor resource utilization.
+
+**Jimmy:**  
+That’s not a bad idea.
+
+**Emanuel:**  
+Great. Regarding credentials, could you set up a dedicated Active Directory account for us? You can leave it disabled until we’re ready to run the scan, enable it during the scan window, and then disable or deprovision it afterward—similar to a just-in-time access approach.
+
+**Jimmy:**  
+That sounds good. I’ll ask Susan to get started on automating the account provisioning.
+
+**Emanuel:**  
+Awesome. Let’s touch base soon.
+
+**Jimmy:**  
+Sounds good. I’ll get back to you once the credentials are set up.
+
+**Emanuel:**  
+See you later.
+
+**Jimmy:**  
+See you later.
+
 ---
 
 ### Step 5) Initial Scan of Server Team Assets
